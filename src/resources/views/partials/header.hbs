@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+    <a class="navbar-brand" style="margin-right: 3%; margin-left: 5%" href="/">LIBRARY</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="userhome">Bài viết của tôi<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      
+      <form class="form-inline my-2 my-lg-0 mx-auto d-block" method="GET" action="search">
+        <input class="form-control" width="50px" type="search" name="q" placeholder="Tìm kiếm" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" onclick="location.href='search' "type="submit">Tìm kiếm</button>
+      </form>
+        <ul class="navbar-nav ml-auto" style="margin-right: 5%">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Đăng nhập
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="login">Đăng nhập</a>
+              <a class="dropdown-item" href="register">Đăng ký</a>
+            </div>
+          </li>
+        </ul>
+  </div>
+</nav>
+
+
+

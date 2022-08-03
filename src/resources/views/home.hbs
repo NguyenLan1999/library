@@ -1,0 +1,27 @@
+{{>slide}}
+<div class="container">
+   
+    <div class="mt-4">
+        <h1>BÀI VIẾT</h1>
+        <div class="container book">
+            <div class="row">
+            {{#each books}}
+                <div class="col-md-3">
+                <div class="card" style="width: 16rem;">
+                    <img class="img-responsive" src="{{this.img}}" alt="Card image cap">
+                    <div class="card-body">
+                         <a href="/book/{{this.slug}}">
+                            <h5 class="card-title">{{this.name}}</h5>
+                        </a>
+                        <a href="/book/{{this.slug}}" class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                    </div>  
+                </div>
+            {{/each}}
+        </div>
+        </div>
+    
+    </div>
+</div>
+
+{{>footer}}

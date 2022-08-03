@@ -1,0 +1,30 @@
+
+<div class="mt-4">
+   
+    <div class="user-login-register">
+        {{!-- <h4 style="color: red">{{message}}</h4> --}}
+        <legend class="text-center">Đăng nhập tài khoản</legend>
+        <form action="/signin" method="POST" class="form-user">
+            <div class="form-group">
+                <label for="username">Tên đăng nhập</label>
+                <input type="username" class="form-control" id="username" name="username" placeholder="Nhập tên đăng nhập">
+            </div>
+            <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu">
+            </div>
+                                
+            <button type="submit" class="btn btn-danger">Đăng nhập</button>
+             <br>
+             <br>
+            Chưa có tài khoản? <a href="/register"> Đăng ký</a>
+            <br>
+            <br>
+        </form>
+       
+    </div>
+
+</div>
+
+
+

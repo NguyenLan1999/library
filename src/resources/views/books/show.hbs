@@ -1,0 +1,63 @@
+<h2 style="margin-left: 5% ;">THÔNG TIN BÀI VIẾT</h2>
+<div class="mt-4">
+    <div class="form-show">
+        <div class="row">
+        <div class="col-lg-3">
+            <img width="80" height="300"  class="card-img-top" src="{{book.img}}" alt="Alt text">
+            {{!-- {{#if isTrue }} --}}
+            <div class="mt-4">
+                 <button type="button" onclick="location.href='/book/{{book._id}}/edit'" class="btn btn-primary btn-lg btn-block">Chỉnh sửa bài viết</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block" data-id="{{book._id}}" data-toggle="modal" data-target="#deleteBook">Xóa bài viết</button>
+            </div>
+            {{!-- {{/if}} --}}
+        </div>
+        <div class="col-lg-9">
+            
+            <h3>{{book.name}}</h3>
+            <h6> Tác giả: {{book.author}}</h6>
+            {{!-- <h6>Người viết: {{book.user.username}}</h6> --}}
+            <h6>Cảm nhận về sách</h6>
+            <p>{{book.description}}</p>
+            
+        </div>
+    </div>
+    </div>
+    
+</div>
+<hr>
+<div class="container">
+    <form action="/book/{{book._id}}/comment" method="POST">
+        <div class="form-floating">
+            <h3 for="content">Bình luận</h3>
+            <textarea rows="3" class="form-control"  id="content" name="content" placeholder="Để lại bình luận ở đây......................"></textarea>
+        </div>
+         <div class="form-floating pt-3">
+            <button type="submit" class="btn rounded-0 btn-primary w-100">Thêm bình luận</button>
+        </div>
+    </form>
+   
+
+</div>
+
+
+<div id="deleteBook" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">Xóa bài viết</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Bạn có chắc chắn muốn xóa bài viêt này?</p>
+        </div>
+        <div class="modal-footer">
+            <button id="btn-delete-book" type="button" class="btn btn-danger">Xóa bỏ</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+{{>footer}}

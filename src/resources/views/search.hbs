@@ -1,0 +1,35 @@
+
+<div class="mt-4">
+    <div class="form-search">
+    <div class="row margin-bottom-40">
+        <div class="col-md-3 col-sm-4">
+            {{!-- <ul class="list-group">
+                <li class="list-group-item">Kết quả tìm kiếm</li>
+                
+            </ul> --}}
+            <h3>Kết quả tìm kiếm</h3>
+        </div>
+        <div class="col-md-9 col-sm-8">
+             {{#each books}}
+            <div class="ggh">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="img-responsive" style="width: 16rem; margin-bottom: 10px" src="{{this.img}}" alt="image cap">
+                        <a href="/book/{{this.slug}}">
+                            <h5 class="card-title">{{this.name}}</h5>
+                        </a>
+                        <h6>Tác giả: {{this.author}}</h6>
+                        <p>Mô tả: {{this.introduce}}</p>
+                        <a href="/book/{{this.slug}}"class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>   
+        
+    </div>
+           
+    </div>
+</div>
+  {{> footer}}
