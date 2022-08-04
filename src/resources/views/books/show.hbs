@@ -50,6 +50,20 @@
    
 
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            {{#each book.declaim}}
+            <img src="./img/user.jpg" alt="" class="user-avatar">
+            <strong>{{this.UserId.username}}</strong>  
+            <br>&emsp;&emsp; {{this.content}}
+            
+            <br>
+            {{/each}}
+        </div>
+    </div>
+</div>
 {{>footer}}
 
 

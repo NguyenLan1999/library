@@ -1,4 +1,5 @@
 const Book = require('../models/book');
+const Comment = require('../models/comment');
 const { mongooseToObject } = require('../../util/mongoose');
 const jwt = require('jsonwebtoken')
 
@@ -10,6 +11,7 @@ class BookController{
              var isTrue = true
              Book.findOne({ slug: req.params.slug })
              .populate({path: 'UserId'})
+             .populate({path: 'declaim', populate: { path: 'UserId'} })
             .then((book) => {
                 if(book.UserId === data._id){
                     res.render('books/show', { 
@@ -28,6 +30,8 @@ class BookController{
             .catch(next)
         }else{
             Book.findOne({ slug: req.params.slug })
+            .populate({path: 'UserId'})
+             .populate({path: 'declaim', populate: { path: 'UserId'} })
             .then((book) => {
                 res.render('books/show', { 
                     book: mongooseToObject(book)
