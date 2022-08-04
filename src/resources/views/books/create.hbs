@@ -1,0 +1,36 @@
+<div class="mt-4">
+    {{#if message }}
+        <div class="alert alert-{{message.type}}" role="alert">
+        <button type="button" class="close" data-dismiss="alert"> &times;</button>
+        <strong>{{message.intro}}</strong> {{message.message}}
+        </div>
+
+    {{/if}}
+</div>
+<div class="mt-4">
+    <h3 class="text-center">TẠO BÀI VIẾT</h3>
+    <form method="post" action="/book/store" enctype="multipart/form-data" class="form-status">
+        <div class="form-group">
+            <label for="name">Tên sách</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="author">Tác giả</label>
+            <input type="text" class="form-control" id="author" name="author">
+        </div>
+        <div class="form-group">
+            <label for="introduce">Giới thiệu về sách</label>
+            <textarea rows="4" class="form-control"  id="introduce" name="introduce"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="description">Cảm nhận về sách</label>
+            <textarea rows="6" class="form-control"  id="description" name="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="img">Hình ảnh</label>
+            <input class="form-control-file" type="file" id="img" name="img">
+        </div>
+        <button type="submit" class="btn btn-primary">Thêm bài viết</button>
+    </form>
+</div>
+  {{> footer}}

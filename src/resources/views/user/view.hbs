@@ -1,0 +1,41 @@
+ <div class="mt-4">
+    {{#if message }}
+        <div class="alert alert-{{message.type}}" role="alert">
+            <button type="button" class="close" data-dismiss="alert"> &times;</button>
+            <strong>{{message.intro}}</strong> {{message.message}}
+        </div>
+    {{/if}}
+</div>
+<div class="container">
+    <div class="mt-4"> 
+    <div class="row margin-bottom-40">
+        <div class="col-md-3 col-sm-4">
+            <div class="list-group">
+                <a href="/user/view" class="list-group-item list-group-item-action active">
+                Thông tin cá nhân
+                 </a>
+                <a href="/user/edit" class="list-group-item list-group-item-action">Chỉnh sửa thông tin cá nhân</a>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-8">
+            <div class="ggh">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tên người dùng: {{user.username}}</h5>
+                        <p>Email: {{user.email}}</p>
+                        <p>Số điện thoại: 0{{user.phone}}</p>
+                        <p>Địa chỉ: {{user.address}}</p>
+                        <p>Tiểu sử: {{user.history}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+           
+    </div>
+</div>
+</div>
+</div>
+
+
+{{> footer}}

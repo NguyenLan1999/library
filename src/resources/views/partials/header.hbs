@@ -19,6 +19,21 @@
         <input class="form-control" width="50px" type="search" name="q" placeholder="Tìm kiếm" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" onclick="location.href='search' "type="submit">Tìm kiếm</button>
       </form>
+       {{#if data}}
+        <ul class="navbar-nav ml-auto" style="margin-right: 5%">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             {{!-- <img src="./img/user.jpg" alt="" class="user-avatar"> --}}
+             Tài khoản
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="user/view">Thông tin tài khoản </a>
+              <a class="dropdown-item" href="user/logout">Đăng xuất</a>
+            </div>
+          </li>
+        </ul>
+
+      {{else}}
         <ul class="navbar-nav ml-auto" style="margin-right: 5%">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,6 +45,7 @@
             </div>
           </li>
         </ul>
+    {{/if}}
   </div>
 </nav>
 
