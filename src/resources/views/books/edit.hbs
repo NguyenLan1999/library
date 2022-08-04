@@ -9,7 +9,7 @@
 </div>
 <div class="mt-4">
     <h3 class="text-center">CHỈNH SỬA BÀI VIẾT</h3>
-    <form method="post" action="/detailbook/{{book._id}}?_method=PUT" enctype="multipart/form-data"  class="form-status">
+    <form method="post" action="/book/{{book._id}}?_method=PUT" enctype="multipart/form-data"  class="form-status">
         <div class="form-group">
             <label for="name">Tên sách</label>
             <input type="text" class="form-control" value="{{book.name}}" id="name" name="name">

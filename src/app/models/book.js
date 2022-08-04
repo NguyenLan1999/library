@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
 const Schema = mongoose.Schema;
  const User = require('./user')
-// const Comments = require('./comments')
+const Comment = require('./comment')
 
 mongoose.plugin(slug);
 
@@ -13,14 +13,14 @@ const Book = new Schema({
     img: String,
     slug:{ type: String, slug: "name", unique: true },
     introduce: String,
-    userId: {
+    UserId: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    // declaim:[{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Comment'
-    // }] ,
+    declaim:[{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }] ,
    
 },{ usePushEach: true}
 , {

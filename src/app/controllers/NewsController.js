@@ -6,37 +6,79 @@ const jwt = require('jsonwebtoken')
 class NewsController {
     index(req, res, next) {
         const token = req.signedCookies.token;
-        var data = jwt.verify(token, 'mk')
-        console.log(data)
-        Book.find({})
-
-        .then((books) => {
-           
-            res.render('home', {
-                books: mutipleMongooseToObject(books),
-                data: data
-            });
-        })
-        .catch(next);
+        if(token){
+            var data = jwt.verify(token, 'mk')
+            Book.find({})
+    
+            .then((books) => {
+               
+                res.render('home', {
+                    books: mutipleMongooseToObject(books),
+                    data: data
+                });
+            })
+            .catch(next);
+        }else{
+            Book.find({})
+    
+            .then((books) => {
+               
+                res.render('home', {
+                    books: mutipleMongooseToObject(books)
+                });
+            })
+            .catch(next);
+        }
+       
     }
 
     search(req, res, next) {
        
         const token = req.signedCookies.token;
-        var data = jwt.verify(token, 'mk')
+        if(token){
+            var data = jwt.verify(token, 'mk')
 
-        Book.find({ 'name': {'$regex': req.query.q.toLowerCase(),$options:'i'}})
-            .then((books) => {
-                res.render('search', { 
+            Book.find({ 'name': {'$regex': req.query.q.toLowerCase(),$options:'i'}})
+                .then((books) => {
+                    res.render('search', { 
+                        books: mutipleMongooseToObject(books),
+                        data: data
+                        });
+                })
+                .catch(next);
+        }else{
+            Book.find({ 'name': {'$regex': req.query.q.toLowerCase(),$options:'i'}})
+                .then((books) => {
+                    res.render('search', { 
+                        books: mutipleMongooseToObject(books)
+                        });
+                })
+                .catch(next);
+        }
+       
+    }
+
+    userhome(req, res, next){
+        const token = req.signedCookies.token;
+        if(token){
+            var data = jwt.verify(token, 'mk')
+            Book.find({UserId: data._id})
+            .then((books)=>{
+                res.render('userhome', {
                     books: mutipleMongooseToObject(books),
                     data: data
-                    });
+                });
             })
             .catch(next);
 
-        
-       
-
+        }else{
+            req.session.message ={
+                type: 'danger',
+                intro: 'Lỗi!',
+                message: 'Bạn chưa đăng nhập vào hệ thống!!!!'
+            }
+            res.redirect('back')
+        }
     }
 
 

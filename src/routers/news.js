@@ -7,6 +7,7 @@ router.get('/register', newsController.getRegister);
 router.post('/signup', newsController.postRegister);
 router.get('/login', newsController.getLogin);
 router.post('/signin', newsController.postLogin);
+router.get('/userhome', newsController.userhome);
 router.get('/search', newsController.search);
 router.get('/', newsController.index);
 

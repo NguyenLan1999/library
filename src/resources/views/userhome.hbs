@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="mt-4">
+        <div class="btn-plus">
+            <button type="button" style="background-color: rgb(36, 130, 253); border-color: rgb(36, 130, 253)" onclick="location.href='/book/create'" class="btn btn-primary btn-lg">Thêm bài viết</button>
+        </div>
+</div>
+<div class="mt-4">
+    <div class="row margin-bottom-40">
+        <div class="col-md-3 col-sm-4">
+            <ul class="list-group">
+                <li class="list-group-item">Bài viết của tôi</li>
+                
+            </ul>
+        </div>
+        <div class="col-md-9 col-sm-8">
+             {{#each books}}
+            <div class="ggh">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="img-responsive" style="width: 16rem; margin-bottom: 10px" src="{{this.img}}" alt="image cap">
+                        <a href="/book/{{this.slug}}">
+                            <h5 class="card-title">{{this.name}}</h5>
+                        </a>
+                        <h6>Tác giả: {{this.author}}</h6>
+                        <p>Mô tả: {{this.introduce}}</p>
+                        <a href="/book/{{this.slug}}"class="btn btn-primary">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+            {{/each}}
+        </div>
+        
+           
+    </div>
+</div>
+</div>
+
+{{> footer}}
