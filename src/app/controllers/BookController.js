@@ -81,7 +81,7 @@ class BookController{
                                 intro: 'Thông báo!',
                                 message: 'Bài viết đã được thêm thành công!!!!'
                             }
-                            res.redirect('/')
+                            res.redirect('/userhome')
                     
                         
                         })
@@ -103,7 +103,7 @@ class BookController{
                                 intro: 'Thông báo!',
                                 message: 'Bài viết đã được thêm thành công!!!!'
                             }
-                            res.redirect('/')
+                            res.redirect('/userhome')
                 
                         })
                         .catch(error=>{
