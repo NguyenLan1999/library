@@ -13,7 +13,7 @@ class BookController{
              .populate({path: 'UserId'})
              .populate({path: 'declaim', populate: { path: 'UserId'} })
             .then((book) => {
-                if(book.UserId === data._id){
+                if(book.UserId.equals(data._id)){
                     res.render('books/show', { 
                         book: mongooseToObject(book),
                         data: data,
@@ -25,6 +25,7 @@ class BookController{
                         data: data
                     });
                 }
+               
                 
             })
             .catch(next)
@@ -80,7 +81,10 @@ class BookController{
                                 intro: 'Thông báo!',
                                 message: 'Bài viết đã được thêm thành công!!!!'
                             }
-                            res.redirect('/')})
+                            res.redirect('/')
+                    
+                        
+                        })
                         .catch(error=>{
         
                         })
@@ -99,7 +103,9 @@ class BookController{
                                 intro: 'Thông báo!',
                                 message: 'Bài viết đã được thêm thành công!!!!'
                             }
-                            res.redirect('/')})
+                            res.redirect('/')
+                
+                        })
                         .catch(error=>{
         
                         })

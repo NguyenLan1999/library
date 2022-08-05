@@ -8,18 +8,21 @@ class NewsController {
         const token = req.signedCookies.token;
         if(token){
             var data = jwt.verify(token, 'mk')
-            Book.find({})
-    
-            .then((books) => {
-               
-                res.render('home', {
-                    books: mutipleMongooseToObject(books),
-                    data: data
-                });
+            Book.count().exec(function(err, count){
+                var Random = Math.floor(Math.random()*count)
+                Book.find({}).skip(Random).limit(10)
+                .then((books) => {
+                   
+                    res.render('home', {
+                        books: mutipleMongooseToObject(books),
+                        data: data
+                    });
+                })
+                .catch(next);
             })
-            .catch(next);
+           
         }else{
-            Book.find({})
+            Book.find({}).limit(6)
     
             .then((books) => {
                
