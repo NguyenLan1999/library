@@ -38,6 +38,7 @@ class NewsController {
     search(req, res, next) {
        
         const token = req.signedCookies.token;
+        if(req.query.q){
         if(token){
             var data = jwt.verify(token, 'mk')
 
@@ -58,6 +59,7 @@ class NewsController {
                 })
                 .catch(next);
         }
+    }
        
     }
 
@@ -84,123 +86,6 @@ class NewsController {
         }
     }
 
-
-    getLogin(req, res, next){
-        res.render('user/login');
-    }
-
-    postLogin(req, res, next){
-        
-        const username = req.body.username;
-        const password =req.body.password;
-
-        if(!username && ! password){
-            req.session.message ={
-                type: 'danger',
-                intro: 'Lỗi!',
-                message: 'Tên đăng nhập và mật khẩu không được để trống!!!!'
-            }
-            res.redirect('back');
-        }
-
-        if(!username || !password){
-            req.session.message ={
-                type: 'danger',
-                intro: 'Lỗi!',
-                message: 'Vui lòng nhập tên đăng nhập !!!!'
-            }
-            res.redirect('back');
-
-        }
-
-        User.findOne({
-            username: username,
-            password: password
-        })
-        .then((user)=>{
-            if(user){
-               var token = jwt.sign({
-                _id: user._id
-               }, 'mk')
-               console.log(token)
-                res.cookie('token', token, { signed: true });
-                req.session.message ={
-                    type: 'success',
-                    intro: 'Thông báo!',
-                    message: 'Bạn đã đăng nhập thành công!!!!'
-                    }
-                res.redirect('/');
-            }else{
-                req.session.message ={
-                    type: 'danger',
-                    intro: 'Lỗi!',
-                    message: 'Tên đăng nhập hoặc mật khẩu không chính xác !!!!'
-                    }
-                res.redirect('back');
-            }
-        })
-        
-    }
-    
-    getRegister(req, res, next){
-        res.render('user/register');
-    }
-    postRegister(req, res, next){
-
-        const username = req.body.username;
-        const password = req.body.password;
-        const email = req.body.email;
-
-        if(!username && !password && !email){
-            req.session.message ={
-                type: 'danger',
-                intro: 'Lỗi!',
-                message: 'Vui lòng điền đầy đủ thông tin!!!!'
-            }
-            res.redirect('back');
-        }
-        if(!username || !password || !email){
-            req.session.message ={
-                type: 'danger',
-                intro: 'Lỗi!',
-                message: 'Tên đăng nhâp, email không được để trống!!!!!!!'
-            }
-            res.redirect('back');
-        }
-
-        User.findOne({email: email})
-        .then((user)=>{
-            if(user){
-                req.session.message ={
-                    type: 'danger',
-                    intro: 'Lỗi!',
-                    message: 'Email này đã được sử dụng!!!!!!!'
-                }
-                res.redirect('back')
-            }else{
-                return User.create({
-                    username: username,
-                    password: password,
-                    email: email,
-               })
-               .then((user)=>{
-                var token = jwt.sign({
-                    _id: user._id
-                   }, 'mk')
-                   console.log(token)
-                    res.cookie('token', token, { signed: true });
-                req.session.message ={
-                    type: 'success',
-                    intro: 'Thông báo!',
-                    message: 'Bạn đã đăng ký thành công!!!!'
-                }
-                res.redirect('/');
-               })
-
-            }
-           
-        })
-    }
 }
 
 module.exports = new NewsController();
